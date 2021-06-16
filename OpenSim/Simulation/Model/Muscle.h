@@ -96,6 +96,10 @@ public:
         "Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.");
     OpenSim_DECLARE_PROPERTY(ignore_activation_dynamics, bool,
         "Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.");
+        
+    // Added Kshape Passive
+    OpenSim_DECLARE_PROPERTY(k_shape_passive, double,
+        "Passive exponential factor.");
 
 //=============================================================================
 // OUTPUTS
@@ -201,6 +205,11 @@ public:
     /** get/set the maximum contraction velocity of the fibers, in optimal fiber-lengths per second */
     double getMaxContractionVelocity() const;
     void setMaxContractionVelocity(double maxContractionVelocity);
+    
+    // Added Kshape Passive
+    /** get/set the exponential coeficient of passive force */
+    double getKshapePassive() const;
+    void setKshapePassive(double KshapePassive);
 
     // End of Muscle Parameter Accessors.
     //@} 
@@ -862,6 +871,7 @@ protected:
     double _optimalFiberLength;
     double _pennationAngleAtOptimal;
     double _tendonSlackLength;
+    double _KshapePassive;
 
     mutable CacheVariable<Muscle::MuscleLengthInfo> _lengthInfoCV;
     mutable CacheVariable<Muscle::FiberVelocityInfo> _velInfoCV;

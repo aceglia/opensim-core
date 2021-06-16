@@ -184,6 +184,11 @@ public:
     double getMaximumPennationAngle() const;
     void setMaximumPennationAngle(double maximumPennationAngle);
     /**@}**/
+   /**
+   @Get and set muscle passive properties
+   */
+   double getKshapePassive() const;
+   void setKshapePassive(double KshapePassive);
 
     /**
      @returns the minimum fiber length, which is the maximum of two values:
@@ -205,6 +210,7 @@ public:
             that this muscle model uses
    */
     const MuscleFixedWidthPennationModel& getPennationModel() const;
+
 
 //==============================================================================
 // Public Convenience Methods

@@ -219,6 +219,8 @@ getPennationModel() const
 double Thelen2003Muscle::getMaximumPennationAngle() const
 {   return get_maximum_pennation_angle(); }
 
+double Thelen2003Muscle::getKshapePassive() const
+{   return get_KshapePassive(); }
 //=============================================================================
 // SET
 //=============================================================================
@@ -234,6 +236,8 @@ void Thelen2003Muscle::setMinimumActivation(double minimumActivation)
 void Thelen2003Muscle::setMaximumPennationAngle(double maximumPennationAngle)
 {   set_maximum_pennation_angle(maximumPennationAngle); }
 
+void Thelen2003Muscle::setKshapePassive(double KshapePassive)
+{   set_k_shape_passive(KshapePassive); }
 //==============================================================================
 //                             START OF DEPRECATED
 //==============================================================================

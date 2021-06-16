@@ -152,6 +152,8 @@ void Muscle::constructProperties()
     constructProperty_max_contraction_velocity(10.0);
     constructProperty_ignore_tendon_compliance(false);
     constructProperty_ignore_activation_dynamics(false);
+    //added KshapePassive
+    //constructProperty_k_shape_passive(5.0);
 
     // By default the min and max controls on muscle are 0.0 and 1.0
     setMinControl(0.0);
@@ -178,6 +180,10 @@ double Muscle::getPennationAngleAtOptimalFiberLength() const
 double Muscle::getMaxContractionVelocity() const 
 {   return get_max_contraction_velocity(); }
 
+//added KshapePassive
+double Muscle::getKshapePassive() const
+{   return get_k_shape_passive(); }
+
 void Muscle::setMaxIsometricForce(double aMaxIsometricForce)
 {   set_max_isometric_force(aMaxIsometricForce); }
 
@@ -192,6 +198,10 @@ void Muscle::setPennationAngleAtOptimalFiberLength(double aPennationAngle)
 
 void Muscle::setMaxContractionVelocity(double aMaxContractionVelocity) 
 {   set_max_contraction_velocity(aMaxContractionVelocity); }
+
+//added KshapePassive
+void Muscle::setKshapePassive(double aKshapePassive)
+{   set_k_shape_passive(aKshapePassive); }
 
 
 //=============================================================================
@@ -208,6 +218,7 @@ void Muscle::extendConnectToModel(Model& aModel)
     _optimalFiberLength = getOptimalFiberLength();
     _pennationAngleAtOptimal = getPennationAngleAtOptimalFiberLength();
     _tendonSlackLength = getTendonSlackLength();
+    _KshapePassive = getKshapePassive();
 }
 
 // Add Muscle's contributions to the underlying system
