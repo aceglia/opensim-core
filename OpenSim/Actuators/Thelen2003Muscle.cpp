@@ -58,7 +58,7 @@ Thelen2003Muscle::Thelen2003Muscle()
 Thelen2003Muscle::
 Thelen2003Muscle(const std::string& aName,  double aMaxIsometricForce,
                   double aOptimalFiberLength,double aTendonSlackLength,
-                  double aPennationAngle)
+                  double aPennationAngle, double aKshapePassive)
 {
     setNull();
     constructProperties();
@@ -68,6 +68,7 @@ Thelen2003Muscle(const std::string& aName,  double aMaxIsometricForce,
     setOptimalFiberLength(aOptimalFiberLength);
     setTendonSlackLength(aTendonSlackLength);
     setPennationAngleAtOptimalFiberLength(aPennationAngle);
+    setKshapePassive(aKshapePassive);
 }
 
 //==============================================================================
@@ -180,7 +181,7 @@ void Thelen2003Muscle::constructProperties()
     constructProperty_FmaxTendonStrain(0.04); // was 0.033
     constructProperty_FmaxMuscleStrain(0.6);
     constructProperty_KshapeActive(0.45);   
-    constructProperty_KshapePassive(5.0);   
+    constructProperty_KshapePassive(5.0);
     constructProperty_Af(0.25); 
     constructProperty_Flen(1.4);    //was 1.8, 
     constructProperty_fv_linear_extrap_threshold(0.95);
@@ -219,8 +220,10 @@ getPennationModel() const
 double Thelen2003Muscle::getMaximumPennationAngle() const
 {   return get_maximum_pennation_angle(); }
 
+/*
 double Thelen2003Muscle::getKshapePassive() const
 {   return get_KshapePassive(); }
+*/
 //=============================================================================
 // SET
 //=============================================================================
@@ -235,9 +238,10 @@ void Thelen2003Muscle::setMinimumActivation(double minimumActivation)
 
 void Thelen2003Muscle::setMaximumPennationAngle(double maximumPennationAngle)
 {   set_maximum_pennation_angle(maximumPennationAngle); }
-
+/*
 void Thelen2003Muscle::setKshapePassive(double KshapePassive)
 {   set_k_shape_passive(KshapePassive); }
+*/
 //==============================================================================
 //                             START OF DEPRECATED
 //==============================================================================

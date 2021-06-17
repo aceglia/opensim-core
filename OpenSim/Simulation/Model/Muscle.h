@@ -209,7 +209,7 @@ public:
     // Added Kshape Passive
     /** get/set the exponential coeficient of passive force */
     double getKshapePassive() const;
-    void setKshapePassive(double KshapePassive);
+    void setKshapePassive(double kshapePassive);
 
     // End of Muscle Parameter Accessors.
     //@} 
@@ -871,7 +871,7 @@ protected:
     double _optimalFiberLength;
     double _pennationAngleAtOptimal;
     double _tendonSlackLength;
-    double _KshapePassive;
+    double _kshapePassive;
 
     mutable CacheVariable<Muscle::MuscleLengthInfo> _lengthInfoCV;
     mutable CacheVariable<Muscle::FiberVelocityInfo> _velInfoCV;

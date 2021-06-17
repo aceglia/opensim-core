@@ -161,7 +161,7 @@ public:
     Thelen2003Muscle();
     Thelen2003Muscle(const std::string &aName,double aMaxIsometricForce,
                     double aOptimalFiberLength,double aTendonSlackLength,
-                    double aPennationAngle);
+                    double aPennationAngle, double aKshapePassive);
 
     // Uses default (compiler-generated) destructor, copy constructor, copy 
     // assignment operator.
@@ -186,9 +186,10 @@ public:
     /**@}**/
    /**
    @Get and set muscle passive properties
-   */
+    
    double getKshapePassive() const;
    void setKshapePassive(double KshapePassive);
+  */
 
     /**
      @returns the minimum fiber length, which is the maximum of two values:

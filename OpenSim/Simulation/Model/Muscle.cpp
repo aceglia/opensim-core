@@ -153,8 +153,7 @@ void Muscle::constructProperties()
     constructProperty_ignore_tendon_compliance(false);
     constructProperty_ignore_activation_dynamics(false);
     //added KshapePassive
-    //constructProperty_k_shape_passive(5.0);
-
+    constructProperty_k_shape_passive(5.0);
     // By default the min and max controls on muscle are 0.0 and 1.0
     setMinControl(0.0);
     setMaxControl(1.0);
@@ -218,7 +217,7 @@ void Muscle::extendConnectToModel(Model& aModel)
     _optimalFiberLength = getOptimalFiberLength();
     _pennationAngleAtOptimal = getPennationAngleAtOptimalFiberLength();
     _tendonSlackLength = getTendonSlackLength();
-    _KshapePassive = getKshapePassive();
+    _kshapePassive = getKshapePassive();
 }
 
 // Add Muscle's contributions to the underlying system
