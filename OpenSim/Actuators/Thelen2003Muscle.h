@@ -126,8 +126,8 @@ public:
     OpenSim_DECLARE_PROPERTY(KshapeActive, double,
         "shape factor for Gaussian active muscle force-length relationship");   
 
-    OpenSim_DECLARE_PROPERTY(KshapePassive, double,
-        "exponential shape factor for passive force-length relationship");   
+    //OpenSim_DECLARE_PROPERTY(KshapePassive, double,
+        //"exponential shape factor for passive force-length relationship");   
 
     OpenSim_DECLARE_PROPERTY(Af, double,
         "force-velocity shape factor"); 

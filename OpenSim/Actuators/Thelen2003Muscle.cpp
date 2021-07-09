@@ -87,9 +87,9 @@ void Thelen2003Muscle::extendFinalizeFromProperties()
     SimTK_ERRCHK1_ALWAYS(get_KshapeActive() > 0,
         "Thelen2003Muscle::extendFinalizeFromProperties",
         "%s: KshapeActive must be greater than zero", getName().c_str());
-    SimTK_ERRCHK1_ALWAYS(get_KshapePassive() > 0,
-        "Thelen2003Muscle::extendFinalizeFromProperties",
-        "%s: KshapePassive must be greater than zero", getName().c_str());
+    //SimTK_ERRCHK1_ALWAYS(get_KshapePassive() > 0,
+       // "Thelen2003Muscle::extendFinalizeFromProperties",
+        //"%s: KshapePassive must be greater than zero", getName().c_str());
     SimTK_ERRCHK1_ALWAYS(get_Af() > 0,
         "Thelen2003Muscle::extendFinalizeFromProperties",
         "%s: Af must be greater than zero", getName().c_str());
@@ -181,7 +181,7 @@ void Thelen2003Muscle::constructProperties()
     constructProperty_FmaxTendonStrain(0.04); // was 0.033
     constructProperty_FmaxMuscleStrain(0.6);
     constructProperty_KshapeActive(0.45);   
-    constructProperty_KshapePassive(5.0);
+    //constructProperty_KshapePassive(5.0);
     constructProperty_Af(0.25); 
     constructProperty_Flen(1.4);    //was 1.8, 
     constructProperty_fv_linear_extrap_threshold(0.95);
@@ -1431,7 +1431,7 @@ double Thelen2003Muscle::calcfsefisoPE(double tendonStrain) const
 //
 //==============================================================================
 double Thelen2003Muscle::calcfal(const double lceN) const{       
-    double kShapeActive = get_KshapeActive();   
+    double kShapeActive = get_KshapeActive();
     double x=(lceN-1.)*(lceN-1.);
     double fal = exp(-x/kShapeActive);
     return fal;
@@ -1454,7 +1454,7 @@ double Thelen2003Muscle::calcDfalDlceN(const double lceN) const {
 double Thelen2003Muscle::calcfpe(const double lceN) const {
     double fpe = 0;
     double e0 = get_FmaxMuscleStrain();
-    double kpe = get_KshapePassive();
+    double kpe = getKshapePassive();
 
     //Compute the passive force developed by the muscle
     if(lceN > 1.0){
@@ -1468,7 +1468,7 @@ double Thelen2003Muscle::calcfpe(const double lceN) const {
 double Thelen2003Muscle::calcDfpeDlceN(const double lceN) const {
     double dfpe_d_lceN = 0;
     double e0 = get_FmaxMuscleStrain();
-    double kpe = get_KshapePassive();
+    double kpe = getKshapePassive();
 
     if(lceN > 1.0){
         double t1 = 0.1e1 / e0;
@@ -1482,7 +1482,7 @@ double Thelen2003Muscle::calcDfpeDlceN(const double lceN) const {
 double Thelen2003Muscle::calcfpefisoPE(double lceN) const
 {
     double fmaxMuscleStrain = get_FmaxMuscleStrain();
-    double kShapePassive = get_KshapePassive();
+    double kShapePassive = getKshapePassive();
 
     double musclePE = 0.0;
     //Compute the potential energy stored in the muscle
